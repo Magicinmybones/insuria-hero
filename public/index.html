@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script>
+(()=>{if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+const root=document.documentElement;
+root.classList.add('entry-active');
+window.setTimeout(()=>root.classList.remove('entry-active'),2600);
+})();
+</script>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Insuria — Health insurance made simple</title>
@@ -259,6 +267,27 @@ svg{display:block;overflow:visible}
   .btn-plan,.btn-shop,.btn-care,.nav-link,.view-link{transition:transform .2s ease,background-color .2s ease,box-shadow .2s ease}
   .btn-plan:hover,.btn-shop:hover{transform:translateY(-1px)}
   .btn-care:hover{background-color:rgba(255,255,255,.12)}
+}
+
+/* One opening sequence; the class is removed when it finishes. */
+@media (prefers-reduced-motion:no-preference){
+@keyframes entry-nav{from{opacity:0;transform:translate3d(0,6px,0)}to{opacity:1;transform:none}}
+@keyframes entry-opacity{from{opacity:0}to{opacity:1}}
+@keyframes entry-soft{from{opacity:0;transform:translate3d(0,9px,0)}to{opacity:1;transform:none}}
+@keyframes entry-type{from{opacity:0;transform:translate3d(0,12px,0);clip-path:inset(0 0 100% 0)}to{opacity:1;transform:none;clip-path:inset(0)}}
+@keyframes entry-visual{from{opacity:0;clip-path:inset(10% 0 0 0)}to{opacity:1;clip-path:inset(0)}}
+
+html.entry-active .hero .logo{animation:entry-nav .5s cubic-bezier(.2,.75,.25,1) .05s both}
+html.entry-active .hero .nav-pill{animation:entry-opacity .52s cubic-bezier(.2,.75,.25,1) .17s both}
+html.entry-active .hero > .L > .actions{animation:entry-nav .5s cubic-bezier(.2,.75,.25,1) .25s both}
+html.entry-active .hero .copy #h1a{animation:entry-type .83s cubic-bezier(.16,1,.3,1) .31s both}
+html.entry-active .hero .copy #h1b{animation:entry-type .83s cubic-bezier(.16,1,.3,1) .44s both}
+html.entry-active .hero .copy .sub{animation:entry-soft .62s cubic-bezier(.2,.75,.25,1) .68s both}
+html.entry-active .hero .copy .ctas{animation:entry-soft .6s cubic-bezier(.2,.75,.25,1) .91s both}
+html.entry-active .hero .coverage{animation:entry-soft .62s cubic-bezier(.2,.75,.25,1) 1.09s both}
+html.entry-active .hero .stats .c1{animation:entry-visual .7s cubic-bezier(.16,1,.3,1) 1.17s both}
+html.entry-active .hero .stats .c2{animation:entry-visual .7s cubic-bezier(.16,1,.3,1) 1.27s both}
+html.entry-active .hero .stats .c3{animation:entry-visual .7s cubic-bezier(.16,1,.3,1) 1.37s both}
 }
 </style>
 </head>
